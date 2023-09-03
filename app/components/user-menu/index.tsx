@@ -1,12 +1,15 @@
 "use client";
 import React from "react";
+import { signOut } from "next-auth/react";
 import { AiOutlineMenu } from "react-icons/ai";
+
 import Avatar from "../avatar";
 import MenuItem from "../menu-item";
+
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
-import { User } from "@prisma/client";
-import { signOut } from "next-auth/react";
+import useRentModal from "@/app/hooks/useRentModal";
+
 import { SafeUser } from "@/app/types";
 
 type UserMenuProps = {
@@ -14,20 +17,29 @@ type UserMenuProps = {
 };
 
 const UserMenu = (props: UserMenuProps) => {
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
 
   //User menu is a dropdown menu that appears when the user clicks on the user icon in the navbar.
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const toggleOpen = React.useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
+
+  const onRent = React.useCallback(() => {
+    if (!props.currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  }, [props.currentUser, loginModal, rentModal]);
   return (
     <div className="relative">
       <div className="flex flex-row items-center gap-3">
         <div
           className="hidden md:block text-sm font-semibold py-3 px-4 rounded-full transition cursor-pointer hover:bg-neutral-100"
-          //   onClick={() => {}}
+          onClick={onRent}
         >
           Airbnb your home
         </div>
@@ -51,7 +63,7 @@ const UserMenu = (props: UserMenuProps) => {
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={() => {}} label="Airbnb my home" />
+                <MenuItem onClick={rentModal.onOpen} label="Airbnb my home" />
                 <hr />
                 <MenuItem onClick={() => signOut()} label="Logout" />
               </>
