@@ -1,11 +1,11 @@
 import React from "react";
 
-import EmptyState from "../components/empty-state";
-import ClientOnly from "../components/client-only";
+import EmptyState from "@/app/components/empty-state";
+import ClientOnly from "@/app/components/client-only";
 
-import getCurrentUser from "../actions/getCurrentUser";
-import getReservations from "../actions/getReservations";
-import ReservationClient from "../components/reservation-client";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getReservations from "@/app/actions/getReservations";
+import ReservationClient from "@/app/components/reservation-client";
 
 const ReservationPage = async () => {
   const currentUser = await getCurrentUser();

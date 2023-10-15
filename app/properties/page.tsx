@@ -1,12 +1,12 @@
 import React from "react";
-import EmptyState from "../components/empty-state";
-import ClientOnly from "../components/client-only";
-import TripsClient from "../components/trips-client";
+import EmptyState from "@/app/components/empty-state";
+import ClientOnly from "@/app/components/client-only";
+import TripsClient from "@/app/components/trips-client";
 
-import getCurrentUser from "../actions/getCurrentUser";
-import getReservations from "../actions/getReservations";
-import getListings from "../actions/getListings";
-import PropertiesClient from "../components/properties-client";
+import getCurrentUser from "@/app/actions/getCurrentUser";
+import getReservations from "@/app/actions/getReservations";
+import getListings from "@/app/actions/getListings";
+import PropertiesClient from "@/app/components/properties-client";
 
 const PropertiesPage = async () => {
   const currentUser = await getCurrentUser();
