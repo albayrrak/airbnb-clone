@@ -17,20 +17,22 @@ const Button = (props: ButtonProps) => {
     <button
       onClick={props.onClick}
       disabled={props.disabled}
-      className={cn(
-        "relative disabled:opacity-70 disabled:cursor-not-allowed rounded-lg hover:opacity-80 transition w-full bg-rose-500 py-3 text-md font-semibold border-2",
-        {
-          "bg-white": props.outline,
-          "border-black": props.outline,
-          "text-black": props.outline,
-          "border-rose-500": !props.outline,
-          "text-white": !props.outline,
-          "py-1": props.small,
-          "text-sm": props.small,
-          "font-light": props.small,
-          "border-[1px]": props.small,
-        }
-      )}
+      className={`
+        relative
+        disabled:opacity-70
+        disabled:cursor-not-allowed
+        rounded-lg
+        hover:opacity-80
+        transition
+        w-full
+        ${props.outline ? "bg-white" : "bg-rose-500"}
+        ${props.outline ? "border-black" : "border-rose-500"}
+        ${props.outline ? "text-black" : "text-white"}
+        ${props.small ? "text-sm" : "text-md"}
+        ${props.small ? "py-1" : "py-3"}
+        ${props.small ? "font-light" : "font-semibold"}
+        ${props.small ? "border-[1px]" : "border-2"}
+      `}
     >
       {Icon && <Icon className="absolute left-4 top-3" size={20} />}
       {props.label}

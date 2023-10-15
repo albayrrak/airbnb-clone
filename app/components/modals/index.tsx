@@ -70,10 +70,7 @@ const Modals = (props: ModalsProps) => {
             <div className="translate h-full lg:h-auto md:h-auto borde-0 rounded-lg shadow-lg relative bg-white outline-none focus:outline-none">
               {/*header*/}
               <div className="flex items-center p-6 rounded-t justify-center relative border-b-[1px] ">
-                <button
-                  onClick={props.onClose}
-                  className="p-1 border-0 hover:opacity-70 transition absolute left-9"
-                >
+                <button onClick={props.onClose} className="p-1 border-0 hover:opacity-70 transition absolute left-9">
                   <IoMdClose size={18} />
                 </button>
                 <div className="text-lg font-semibold">{props.title}</div>
@@ -86,17 +83,9 @@ const Modals = (props: ModalsProps) => {
               <div className="flex flex-col gap-2 p-6">
                 <div className="flex flex-row items-center gap-4 w-full">
                   {props.secondaryAction && props.secondaryActionLabel && (
-                    <Button
-                      disabled={props.disabled}
-                      label={props.secondaryActionLabel}
-                      onClick={handleSecondaryAction}
-                    />
+                    <Button outline disabled={props.disabled} label={props.secondaryActionLabel} onClick={handleSecondaryAction} />
                   )}
-                  <Button
-                    disabled={props.disabled}
-                    label={props.actionLabel}
-                    onClick={handleSubmit}
-                  />
+                  <Button disabled={props.disabled} label={props.actionLabel} onClick={handleSubmit} />
                 </div>
                 {props.footer}
               </div>
