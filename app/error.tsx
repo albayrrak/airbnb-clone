@@ -11,7 +11,7 @@ const ErrorState = (props: ErrorStateProps) => {
   useEffect(() => {
     console.error(props.error);
   }, [props.error]);
-  return <EmptyState title="Uh Oh" subtitle="Something went wrong!" />;
+  return <EmptyState title="Uh Oh" subtitle="Something  wrong!" />;
 };
 
 export default ErrorState;
