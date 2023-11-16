@@ -10,7 +10,7 @@ on:
 jobs:
   build:
 
-    runs-on: selft_hosted
+    runs-on: self_hosted
 
     strategy:
       matrix:
