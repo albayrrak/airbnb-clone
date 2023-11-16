@@ -14,7 +14,7 @@ const Home = async ({ searchParams }: HomeProps) => {
   const listings = await getListings(searchParams);
   const currentUser = await getCurrentUser();
 
-  console.log("test");
+  console.log("test2");
 
   if (listings.length === 0) {
     return (
